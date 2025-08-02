@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For founders building, growing and scaling your business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F5F5F5;
+            line-height: 1.4;
+        }
+        
+        .header {
+            background: white;
+            border-bottom: 1px solid #D1D5DB;
+            padding: 12px 16px;
+        }
+        
+        .header-content {
+            max-width: 1152px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .header-nav .logo {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+        }
+        
+        .header-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            text-decoration: none;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            background: #D1D5DB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background: #9CA3AF;
+            border-radius: 50%;
+        }
+        
+        .hero {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 64px 24px 32px;
+            text-align: left;
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 72px);
+            font-weight: 700;
+            color: black;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #374151;
+            margin-bottom: 16px;
+            max-width: 768px;
+        }
+        
+        .dimension-tag {
+            display: inline-block;
+            background: #2563EB;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .grid-section {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        
+        .masonry-grid {
+            columns: 1;
+            column-gap: 16px;
+        }
+        
+        @media (min-width: 640px) {
+            .masonry-grid { columns: 2; }
+        }
+        
+        @media (min-width: 768px) {
+            .masonry-grid { columns: 3; }
+        }
+        
+        @media (min-width: 1024px) {
+            .masonry-grid { columns: 4; }
+        }
+        
+        .card {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            position: relative;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .card-image.h-32 { height: 128px; }
+        .card-image.h-36 { height: 144px; }
+        .card-image.h-40 { height: 160px; }
+        .card-image.h-44 { height: 176px; }
+        .card-image.h-48 { height: 192px; }
+        
+        .card-avatar {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .card-content {
+            padding: 12px;
+        }
+        
+        .card-title {
+            font-weight: 500;
+            color: black;
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+        
+        .card-subtitle {
+            font-size: 12px;
+            color: #6B7280;
+        }
+        
+        .footer {
+            background: #1F2937;
+            color: white;
+            padding: 48px 0;
+        }
+        
+        .footer-content {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .footer h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .footer p {
+            color: #D1D5DB;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            font-size: 14px;
+        }
+        
+        .footer-links h4 {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            color: #D1D5DB;
+            margin-bottom: 4px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #4B5563;
+            margin-top: 32px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+        
+        .color-1 { background-color: #FF6B6B; }
+        .color-2 { background-color: #4ECDC4; }
+        .color-3 { background-color: #45B7D1; }
+        .color-4 { background-color: #96CEB4; }
+        .color-5 { background-color: #FECA57; }
+        .color-6 { background-color: #FF9FF3; }
+        .color-7 { background-color: #54A0FF; }
+        .color-8 { background-color: #5F27CD; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-nav">
+                <div class="logo">Pinterest</div>
+                <a href="#" class="nav-link">Today</a>
+                <a href="#" class="nav-link">Create</a>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">💬</button>
+                <div class="avatar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>For founders building, growing and scaling your business</h1>
+        <p>Access the best business insights from successful Pattern builders, the sales process founders behind them, a...</p>
+        <div class="dimension-tag">1200 × 572</div>
+    </section>
+
+    <!-- Masonry Grid -->
+    <section class="grid-section">
+        <div class="masonry-grid">
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="Gift: See You In September" class="card-image h-48">
+                    <div class="card-avatar color-1">S</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Gift: See You In September</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=200&fit=crop" alt="Introducing Online Pattern" class="card-image h-32">
+                    <div class="card-avatar color-2">M</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Introducing Online Pattern Blends, the sales process founders behind them, a...</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop" alt="Setting Your Shopify Store" class="card-image h-40">
+                    <div class="card-avatar color-3">K</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Setting Your Shopify Store</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=220&fit=crop" alt="A Describe My Art Resource" class="card-image h-36">
+                    <div class="card-avatar color-4">L</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">A Describe My Art Resource for Art Sales</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=270&fit=crop" alt="Why Right Now is a Great Time" class="card-image h-44">
+                    <div class="card-avatar color-5">C</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Why Right Now is a Great Time to Sell Your Brand</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="Setting Your Shopify Store Price" class="card-image h-40">
+                    <div class="card-avatar color-6">B</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Setting Your Shopify Store Price (Week 4)</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" alt="Pattern 2020 Update" class="card-image h-32">
+                    <div class="card-avatar color-7">G</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Pattern 2020 Update</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=220&fit=crop" alt="Introducing Field" class="card-image h-36">
+                    <div class="card-avatar color-8">P</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Introducing Field</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Introducing Pattern" class="card-image h-48">
+                    <div class="card-avatar color-1">S</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Introducing Pattern</h3>
+                    <p class="card-subtitle">Lala Lopes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <h2>We're focused on building, a better future.</h2>
+                    <p>If you'd like to partner with us, we're friends talk.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Legal Policy</h4>
+                        <ul>
+                            <li>Application</li>
+                            <li>Netzwerk</li>
+                            <li>Rechtliches</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li>Aufgaben</li>
+                            <li>Management</li>
+                            <li>Join Forces</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Services</h4>
+                        <ul>
+                            <li>Jobs</li>
+                            <li>Landing</li>
+                            <li>Call to Action</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Pattern Foundry</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
